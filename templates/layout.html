@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <title>{% block title %}{% endblock %} - Cut Up</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+        {# <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css"> #}
+
+        <script>
+            $(function() {
+                $( "#menu" ).menu();
+            });
+        </script>
+        <style>
+            /* Clearfix for the menu */
+            .ui-menu:after {
+                content: ".";
+                display: block;
+                clear: both;
+                visibility: hidden;
+                line-height: 0;
+                height: 0;
+            }
+            .ui-menu .ui-menu-item {
+                display: inline-block;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                width: auto;
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+<div id="header">
+    <ul id="menu">
+        <li><a href="{{ url_for('submit') }}">Enter Your Text</a></li>
+        <li><a href="{{ url_for('acknowledgements') }}">Acknowledgements</a> </li>
+        <li><a href="{{ url_for('threeafricas') }}">Demo Content: Essay</a> </li>
+        <li><a href="{{ url_for('icry') }}">Demo Content: Poem</a> </li>
+    </ul>
+</div>
+<section id="content">
+    <style>
+        body {
+            background-image: url({{ url_for('static', filename='images/bg.jpg') }});
+        }
+    </style>
+    {% block content %}{% endblock %}
+</section>
+
+<div id="footer">
+    {% block footer %}
+        &copy; Copyright 2013 by <a href="mailto:aanderson55@horizon.csueastbay.edu">Allan Anderson</a> and
+        <a href="mailto:sshahkar@horizon.csueastbay.edu">Shahien Shahkar</a>.
+    {% endblock %}
+</div>
+</body>

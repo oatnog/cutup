@@ -1,0 +1,59 @@
+
+{%  extends "layout.html" %}
+{% block title %} Cut Up Text {% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+    #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+    #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; /*font-size: 1.4em;*/ text-indent: 40px; }
+    #sortable li span { position: absolute; margin-left: -1.3em; }
+
+    #content strong { text-align: center; } /* why u no work */
+    #original pre { white-space: pre-wrap; }
+    </style>
+    <script>
+    $(function() {
+        $( "#sortable" ).sortable();
+        $( "#sortable" ).disableSelection();
+    });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h4>This text has been randomly reordered. Drag the pieces around until they make sense!</h4>
+    <p><em>For example, do the paragraphs in an essay flow from one topic to another? Are they organized in the order
+    they are presented in the introduction?</em></p>
+    <p><em>If the text is a poem, what do you think was the original order the lines were written? </em></p>
+    <p><em>Would another order make just as much sense? Would it change anything important about the poem's meaning
+        or emotional impact?</em></p>
+<div class="content">
+<style>strong { text-align: center; }</style>
+    {% if title is string %}
+    <strong> {{ title }}
+        {%  if author is string %}
+            by {{ author }}
+        {% endif %}
+    </strong>
+    {% endif %}
+    <ul id="sortable">
+    {% for stanza in stanzas %}
+    <li class="ui-state-default"> {{ stanza }} </li>
+    {% endfor %}
+    </ul>
+</div>
+<div class="original">
+<style>pre { white-space: pre-wrap; /*text-indent: 40px;*/ }</style>
+    {% if title is string %}
+        <strong> {{ title }}
+            {%  if author is string %}
+                by {{ author }}
+            {% endif %}
+        </strong>
+    {% endif %}
+<pre>
+    {{ original }}
+</pre>
+</div>
+
+{% endblock %}

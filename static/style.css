@@ -1,0 +1,42 @@
+body, footer, header, section {
+	display: block;
+}
+
+li {
+	line-height: 1.4em;
+	list-style: circle;
+	color: #FFF;
+}
+
+code, pre, kbd, samp {
+	font-family: Menlo,Monaco,'DejaVu Sans Mono','Bitstream Vera Sans Mono','Consolas','Courier New',Courier,monospace;
+	font-size: 0.9em;
+}
+#menu {
+	border-bottom: 1px dashed #BBB;
+	/* background-color: #663300;
+	color: #FFF; */
+	margin: 40px;
+	text-align: center;
+	height: 40px;
+	margin-right: 100px;
+	margin-left: 100px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+#footer {
+	overflow: hidden;
+	clear: both;
+	font-size: 0.8em;
+	background: rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	padding: 15px;
+	margin-top: 40px;
+}
+
+#footer section {
+	float: right;
+}
+
+

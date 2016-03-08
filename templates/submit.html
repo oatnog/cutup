@@ -1,0 +1,57 @@
+<style type="text/css">
+.submitbox {
+	float: right;
+}
+</style>
+{%  extends "layout.html" %}
+{% block title %} Submit Text {% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+    {% if slugs is iterable %}
+        <div class="header">
+            <script>
+                $(function() {
+                    $( "#bookmarkmenu" ).menu();
+                });
+            </script>
+            <ul id="bookmarkmenu">
+                {% for slug in slugs %}
+                    <li><a href="/{{ slug.slug }}">{{ slug.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+<div>
+<form id="form1" name="form1" method="post" action="">
+  <p>
+    <label for="writing"></label>
+  Enter a poem or essay here. Cutup will cut it up line by line or paragraph by paragraph, then shuffle the pieces.
+  Students may try to put them back in the original order...or come up with something better!</p>
+  <p>
+  	Title: <input type="text" name="title" id="title" size="50"/>
+    Author: <input type="text" name="author" id="author" size="25"/>
+  <p>
+    <textarea name="writing" id="writing" cols="75" rows="30" maxlength="1024"></textarea>
+    <object width="550" height="400" id="cutup2" align="right"
+                classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000">
+      <param name="swfversion" value="9.0.0.0" />
+      <param name="movie" value="{{ url_for('static',filename='cutup2.swf') }}" />
+      <param name="SRC" value="{{ url_for('static',filename='cutup2.swf') }}" />
+      <param name="quality" value="high" />
+      <param name="play" value="true" />
+      <param name="wmode" value="transparent" />
+      <param name="menu" value="true" />
+      <param name="devicefont" value="false" />
+      <param name="salign" value="" />
+      <embed src="{{ url_for('static',filename='cutup2.swf') }}" width="550" height="400"> </embed>
+    </object>
+  </p>
+  <input name="submit" type="submit" />
+</form>
+</div>
+{% endblock %}

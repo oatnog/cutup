@@ -1,0 +1,19 @@
+{%  extends "layout.html" %}
+{% block title %} Acknowledgements {% endblock %}
+
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block content %}
+These tools were used to create this application.
+<ul>
+{% for acknowledgement, link in acknowledgements.iteritems() %}
+    <li> <a href="{{ link }}">{{ acknowledgement }}</a>  </li>
+{% endfor %}
+</ul>
+
+<p>Thank you to Stephanie Berger for introducing me to this learning strategy!</p>
+
+{% endblock %}
