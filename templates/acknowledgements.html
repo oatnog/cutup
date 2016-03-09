@@ -9,7 +9,7 @@
 {% block content %}
 These tools were used to create this application.
 <ul>
-{% for acknowledgement, link in acknowledgements.iteritems() %}
+{% for acknowledgement, link in acknowledgements.items() %}
     <li> <a href="{{ link }}">{{ acknowledgement }}</a>  </li>
 {% endfor %}
 </ul>
